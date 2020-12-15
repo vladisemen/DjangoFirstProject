@@ -18,12 +18,13 @@ from firstapp import views
  
 urlpatterns = [
 
-    path('index.html/men.html', views.men),
 
     path('', views.index), #запрос к индексу обрабатывается def index
-    re_path(r'^index', views.index), #запрос к about обрабатывается def
-    re_path(r'^about', views.about),
-    re_path(r'^men', views.men),
+    re_path(r'^index', views.index),
+
+    re_path(r'^men/(?P<productCat>\D+)/', views.menCat),
+    re_path(r'^men/$', views.menCat),
+
     re_path(r'^admin', views.admin),
     path('edit/<int:id>/', views.edit),
     path('delete/<int:id>/', views.delete),

@@ -7,15 +7,16 @@ from firstapp.models import Produckt
 def index(request):
     return render(request, "firstapp/index.html")
 
-
-def about(request):
-    return render(request, "firstapp/index.html")
+def menCat(request, productCat = "null"):
+    if productCat == "null":
+        product = Produckt.objects.all()
+    else:
+        product = Produckt.objects.filter(categories=productCat)
+    return render(request, "firstapp/men.html", {"products": product})
 
 
 # получение данных из бд
-def men(request):
-    product = Produckt.objects.all()
-    return render(request, "firstapp/men.html", {"products": product})
+
 
 
 def admin(request):
