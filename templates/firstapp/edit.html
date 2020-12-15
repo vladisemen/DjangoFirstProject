@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Модели в Django</title>
+</head>
+<body class="container">
+    <form method="POST">
+        {% csrf_token %}
+        <!-- -->
+         <p>
+            <label>Name</label><br>
+            <input type="text" name="name" value="{{product.name}}"/>
+        </p>
+        <p>
+            <label>categories</label><br>
+            <select name="categories" >
+                <option value="jacket">jacket</option>
+                <option value="shoes">shoes</option>
+            </select>
+        </p>
+        <p>
+            <label>Price</label><br>
+            <input type="number" name="price" value="{{product.price}}" />
+        </p>
+        <p>
+            <label>ImageUrl</label><br>
+            <input type="text" name="imageUrl" value="{{product.imageUrl}}"/>
+        </p>
+        <input type="submit" value="Сохранить" >
+    </form>
+</body>
+</html>

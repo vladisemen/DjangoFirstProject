@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Модели в Django</title>
+</head>
+<body class="container">
+    <form method="POST" action="admin/">
+        {% csrf_token %}
+        <p>
+            <label>Name</label><br>
+            <input type="text" name="name" />
+        </p>
+        <p>
+            <label>categories</label><br>
+            <select name="categories" >
+                <option value="jacket">jacket</option>
+                <option value="shoes">shoes</option>
+            </select>
+        </p>
+        <p>
+            <label>Price</label><br>
+            <input type="number" name="price" />
+        </p>
+        <p>
+            <label>ImageUrl</label><br>
+            <input type="text" name="imageUrl" />
+        </p>
+        <input type="submit" value="Save" >
+    </form>
+    <a href="/index.html">Назад</a>
+    {% if products.count > 0 %}
+    <h2>Список продуктов</h2>
+    <table>
+        <tr><th>Name</th><th>categories</th><th>price</th></tr>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.name }}</td>
+            <td>{{ product.categories }}</td>
+            <td>{{ product.price }}</td>
+         <td><a href="edit/{{product.id}}">Изменить</a> | <a href="delete/{{product.id}}">Удалить</a></td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</body>
+</html>
